@@ -55,8 +55,12 @@ public class InitDatabase implements ServletContextListener {
 			st.execute(createQuery.toString());
 		}
 		catch (SQLException sqlEx) {
+			sqlEx.printStackTrace();
+		}
+		finally {
 			DbUtils.closeQuietly(conn, st, null);
 		}
+
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {
